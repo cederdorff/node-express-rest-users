@@ -16,7 +16,7 @@
     {
         "id": "fTs84KRoYw5pRZEWCq2Z",
         "image": "https://share.cederdorff.com/images/race.jpg",
-        "mail": "race@eaaa.dk",
+        "mail": "race@kea.dk",
         "name": "Rasmus Cederdorff",
         "title": "Senior Lecturer"
     },
@@ -33,5 +33,12 @@
         "mail": "lskj@eaaa.dk",
         "name": "Line Skjødt",
         "title": "Senior Lecturer & Internship Coordinator"
+    },
+    {
+        "id": "mtzGG1MnHYm3r1Ca79Hj",
+        "image": "https://share.cederdorff.com/images/petl.jpg",
+        "mail": "petl@kea.dk",
+        "name": "Peter Lind",
+        "title": "Senior Lecturer"
     }
 ]
