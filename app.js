@@ -6,6 +6,7 @@ const app = express();
 const port = process.env.PORT || 3333;
 
 app.use(express.json()); // to parse JSON bodies
+app.use(express.urlencoded({ extended: true })); //Parse URL-encoded bodies
 app.use(cors());
 
 app.get("/", (req, res) => {
