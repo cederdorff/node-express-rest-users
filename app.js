@@ -2,10 +2,9 @@ import express from "express";
 import fs from "fs/promises";
 
 const app = express();
-const port = 3333;
+const port = process.env.PORT || 3333;
 
 app.use(express.json()); // to parse JSON bodies
-// app.use(express.urlencoded({ extended: true })); //Parse URL-encoded bodies
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
@@ -69,5 +68,6 @@ app.delete("/users/:id", async (request, response) => {
 });
 
 app.listen(port, () => {
-    console.log(`Example app listening on  http://localhost:${port}`);
+    console.log(`App listening on http://localhost:${port}`);
+    console.log(`Users Endpoint http://localhost:${port}/users`);
 });
