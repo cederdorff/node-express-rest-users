@@ -5,6 +5,9 @@ const app = express();
 const port = process.env.PORT || 3333;
 
 app.use(express.json()); // to parse JSON bodies
+app.use((request, response, next) => {
+    response.setHeader("Allow-Access-Control-Header", "*");
+});
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
