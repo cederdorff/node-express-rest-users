@@ -15,6 +15,7 @@ app.get("/", (req, res) => {
 async function getUsersFromJSON() {
     const data = await fs.readFile("data.json");
     const users = JSON.parse(data);
+    users.sort((userA, userB) => userA.name.localeCompare(userB.name));
     return users;
 }
 
