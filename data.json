@@ -1,0 +1,37 @@
+[
+    {
+        "id": "HlvRHr58C05guOLl64k5",
+        "image": "https://www.eaaa.dk/media/bdojel41/dan-okkels-brendstrup.jpg?anchor=center&mode=crop&width=800&height=450&rnd=132792921559630000&format=webp",
+        "mail": "dob@eaaa.dk",
+        "name": "Dan Okkels Brendstrup",
+        "title": "Lecturer"
+    },
+    {
+        "id": "ZfPTVEMQKf9vhNiUh0bj",
+        "image": "https://www.baaa.dk/media/b5ahrlra/maria-louise-bendixen.jpg?anchor=center&mode=crop&width=800&height=450&rnd=132792921650330000&format=webp",
+        "mail": "mlbe@eaaa.dk",
+        "name": "Maria Louise Bendixen",
+        "title": "Senior Lecturer"
+    },
+    {
+        "id": "fTs84KRoYw5pRZEWCq2Z",
+        "image": "https://share.cederdorff.com/images/race.jpg",
+        "mail": "race@eaaa.dk",
+        "name": "Rasmus Cederdorff",
+        "title": "Senior Lecturer"
+    },
+    {
+        "id": "fjpRTRTjZHwrq3tTLHri",
+        "image": "https://www.baaa.dk/media/5buh1xeo/anne-kirketerp.jpg?anchor=center&mode=crop&width=800&height=450&rnd=132792921531600000&format=webp",
+        "mail": "anki@eaaa.dk",
+        "name": "Anne Kirketerp",
+        "title": "Head of Department"
+    },
+    {
+        "id": "pqzGY1MnHYm3I4Ca79Xn",
+        "image": "https://www.eaaa.dk/media/14qpfeq4/line-skjodt.jpg?width=800&height=450&rnd=133178433559770000",
+        "mail": "lskj@eaaa.dk",
+        "name": "Line Skjødt",
+        "title": "Senior Lecturer & Internship Coordinator"
+    }
+]
