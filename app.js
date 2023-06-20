@@ -1,13 +1,12 @@
 import express from "express";
 import fs from "fs/promises";
+import cors from "cors";
 
 const app = express();
 const port = process.env.PORT || 3333;
 
 app.use(express.json()); // to parse JSON bodies
-app.use((request, response, next) => {
-    response.setHeader("Allow-Access-Control-Header", "*");
-});
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
