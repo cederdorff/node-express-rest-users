@@ -1,6 +1,7 @@
 import express from "express";
 import fs from "fs/promises";
 import cors from "cors";
+import connection from "./database.js";
 
 const app = express();
 const port = process.env.PORT || 3333;
@@ -21,53 +22,78 @@ async function getUsersFromJSON() {
 
 // READ all users
 app.get("/users", async (request, response) => {
-    response.json(await getUsersFromJSON());
+    const query = "SELECT * FROM users ORDER BY name;"; // sql query to select all from the table users
+    connection.query(query, (error, results, fields) => {
+        if (error) {
+            console.log(error);
+        } else {
+            response.json(results);
+        }
+    });
 });
 
 // READ one user
 app.get("/users/:id", async (request, response) => {
-    const id = request.params.id; // tager id fra url'en, så det kan anvendes til at finde den givne bruger med "det" id.
-    const users = await getUsersFromJSON();
-    const user = users.find(user => user.id === id);
-    response.json(user);
+    const id = request.params.id;
+    const query = "SELECT * FROM users WHERE id=?;"; // sql query
+    const values = [id];
+
+    connection.query(query, values, (error, results, fields) => {
+        console.log(results);
+        if (error) {
+            console.log(error);
+        } else {
+            response.json(results[0]);
+        }
+    });
 });
 
 // CREATE user
 app.post("/users", async (request, response) => {
-    const newUser = request.body;
-    newUser.id = new Date().getTime();
-    console.log(newUser);
+    const user = request.body;
+    const query = "INSERT INTO users(name, mail, title, image) values(?,?,?,?);"; // sql query
+    // const query = "INSERT INTO users SET name=?, mail=?, title=?, image=?;"; // sql query
+    const values = [user.name, user.mail, user.title, user.image];
 
-    const users = await getUsersFromJSON();
-    users.push(newUser);
-    fs.writeFile("data.json", JSON.stringify(users));
-    response.json(users);
+    connection.query(query, values, (error, results, fields) => {
+        if (error) {
+            console.log(error);
+        } else {
+            response.json(results);
+        }
+    });
 });
 
 // UPDATE user
 app.put("/users/:id", async (request, response) => {
-    const id = request.params.id; // tager id fra url'en, så det kan anvendes til at finde den givne bruger med "det" id.
-    const users = await getUsersFromJSON();
-    let userToUpdate = users.find(user => user.id === id);
-    const body = request.body;
-    userToUpdate.image = body.image;
-    userToUpdate.mail = body.mail;
-    userToUpdate.name = body.name;
-    userToUpdate.title = body.title;
+    const id = request.params.id;
+    const user = request.body;
+    const query = "UPDATE users SET name=?, mail=?, title=?, image=? WHERE id=?;"; // sql query
+    // const query = `UPDATE users SET name="${user.name}", mail="${user.mail}", title="${user.title}", image="${user.image}" WHERE id=${id};`; // sql query
+    const values = [user.name, user.mail, user.title, user.image, id];
 
-    fs.writeFile("data.json", JSON.stringify(users));
-    response.json(users);
+    connection.query(query, values, (error, results, fields) => {
+        if (error) {
+            console.log(error);
+        } else {
+            response.json(results);
+        }
+    });
 });
 
 // DELETE user
 app.delete("/users/:id", async (request, response) => {
     const id = request.params.id; // tager id fra url'en, så det kan anvendes til at finde den givne bruger med "det" id.
-    const users = await getUsersFromJSON();
-    // const newUsers = users.filter(user => user.id === id);
-    const userToDelete = users.findIndex(user => user.id === id);
-    users.splice(userToDelete, 1);
-    fs.writeFile("data.json", JSON.stringify(users));
-    response.json(users);
+    const query = "DELETE FROM users WHERE id=?;"; // sql query
+    const values = [id];
+
+    connection.query(query, values, (error, results, fields) => {
+        if (error) {
+            console.log(error);
+        } else {
+            response.json(results);
+        }
+    });
 });
 
 app.listen(port, () => {
