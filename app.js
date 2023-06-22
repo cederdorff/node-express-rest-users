@@ -1,6 +1,5 @@
-import express from "express";
-import fs from "fs/promises";
 import cors from "cors";
+import express from "express";
 import connection from "./database.js";
 
 const app = express();
@@ -10,15 +9,8 @@ app.use(express.json()); // to parse JSON bodies
 app.use(cors());
 
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.send("Node Express REST Users API");
 });
-
-async function getUsersFromJSON() {
-    const data = await fs.readFile("data.json");
-    const users = JSON.parse(data);
-    users.sort((userA, userB) => userA.name.localeCompare(userB.name));
-    return users;
-}
 
 // READ all users
 app.get("/users", async (request, response) => {
@@ -39,7 +31,6 @@ app.get("/users/:id", async (request, response) => {
     const values = [id];
 
     connection.query(query, values, (error, results, fields) => {
-        console.log(results);
         if (error) {
             console.log(error);
         } else {
