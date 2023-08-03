@@ -1,4 +1,4 @@
-import mysql from "mysql2"; // using mysql2 - an install npm library
+import mysql from "mysql2"; // using mysql2 - installed npm library
 import "dotenv/config";
 
 // using the variables from the .env file
