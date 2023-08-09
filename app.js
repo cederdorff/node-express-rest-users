@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || 3333;
 
 app.use(express.json()); // to parse JSON bodies
-app.use(cors());
+app.use(cors()); // Enable CORS for all routes
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
