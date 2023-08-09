@@ -63,7 +63,7 @@ app.put("/users/:id", async (request, response) => {
 app.delete("/users/:id", async (request, response) => {
     const id = request.params.id; // tager id fra url'en, så det kan anvendes til at finde den givne bruger med "det" id.
     const users = await getUsersFromJSON();
-    // const newUsers = users.filter(user => user.id === id);
+    // const newUsers = users.filter(user => user.id !== id);
     const userToDelete = users.findIndex(user => user.id === id);
     users.splice(userToDelete, 1);
     fs.writeFile("data.json", JSON.stringify(users));
