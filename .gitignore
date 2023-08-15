@@ -14,3 +14,4 @@ web-build/
 .DS_Store
 .env
 .vscode/settings.json
+DigiCertGlobalRootCA.crt.pem
