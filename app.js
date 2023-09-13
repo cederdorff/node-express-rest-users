@@ -14,7 +14,8 @@ app.get("/", (req, res) => {
 
 // READ all users
 app.get("/users", (request, response) => {
-    const query = "SELECT * FROM users ORDER BY name;"; // sql query to select all from the table users
+    // sql query to select all from the table users
+    const query = "SELECT * FROM users ORDER BY name;";
     connection.query(query, (error, results, fields) => {
         if (error) {
             console.log(error);
