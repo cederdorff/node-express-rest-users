@@ -18,5 +18,4 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
     console.log(`App listening on http://localhost:${port}`);
-    console.log(`Users Endpoint http://localhost:${port}/users`);
 });
