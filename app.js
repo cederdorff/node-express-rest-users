@@ -4,7 +4,7 @@ import usersRouter from "./routes/users.js";
 import postsRouter from "./routes/posts.js";
 
 const app = express();
-const port = process.env.PORT || 3333;
+const port = process.env.PORT;
 
 app.use(express.json()); // to parse JSON bodies
 app.use(cors());
