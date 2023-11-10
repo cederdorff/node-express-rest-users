@@ -3,7 +3,7 @@ import "dotenv/config";
 
 // using the variables from the .env file
 // and creates the connection to database
-const connection = await mysql.createConnection({
+const db = await mysql.createConnection({
     host: process.env.MYSQL_HOST,
     port: process.env.MYSQL_PORT,
     user: process.env.MYSQL_USER,
@@ -13,4 +13,4 @@ const connection = await mysql.createConnection({
 });
 
 // exports database connection
-export default connection;
+export default db;
