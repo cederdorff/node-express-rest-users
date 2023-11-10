@@ -8,8 +8,8 @@ const port = process.env.PORT || 3333;
 app.use(express.json()); // to parse JSON bodies
 app.use(cors());
 
-app.get("/", (req, res) => {
-    res.send("Node Express REST Users API");
+app.get("/", (request, response) => {
+    response.send("Node Express REST Users API");
 });
 
 // READ all users
