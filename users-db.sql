@@ -1,8 +1,8 @@
+-- Delete a database
+DROP DATABASE IF EXISTS users_db;
+
 -- Create a database
 CREATE DATABASE users_db;
-
--- Delete a database
-DROP DATABASE users_db;
 
 -- Select and use database, users_db
 USE users_db;
@@ -13,11 +13,8 @@ CREATE TABLE users (
     name VARCHAR(100) NOT NULL,
     mail VARCHAR(255) UNIQUE NOT NULL,
     title VARCHAR(100),
-    image VARCHAR(500)
+    image TEXT
 );
-
--- Delete a table
-DROP TABLE users;
 
 -- insert
 INSERT INTO users (name, mail, title, image) VALUES ('Peter Lind', 'petl@kea.dk', 'Senior Lecturer', 'https://share.cederdorff.com/images/petl.jpg');
@@ -51,15 +48,6 @@ WHERE title = 'Senior Lecturer';
 SELECT *
 FROM users
 WHERE name = 'Edith Terte';
-
--- Create a New Table
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(256) NOT NULL,
-    mail VARCHAR(256),
-    title VARCHAR(256),
-    image TEXT
-);
 
 -- Create New Row (entity or record)
 INSERT INTO users (name, mail, title, image)
