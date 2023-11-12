@@ -1,20 +1,11 @@
--- Delete a database
-DROP DATABASE users_db;
-
 -- Create a database
 CREATE DATABASE users_db;
 
+-- Delete a database
+DROP DATABASE users_db;
+
 -- Select and use database, users_db
 USE users_db;
-
--- Create a New Table
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255),
-    mail VARCHAR(255),
-    title VARCHAR(255),
-    image VARCHAR(255)
-);
 
 -- Create a New Table
 CREATE TABLE users (
@@ -34,12 +25,13 @@ INSERT INTO users (name, mail, title, image) VALUES ('Rasmus Cederdorff', 'race@
 INSERT INTO users (name, mail, title, image) VALUES ('Lars Bogetoft', 'larb@eaaa.dk', 'Head of Education', 'https://kea.dk/slir/w200-c1x1/images/user-profile/chefer/larb.jpg');
 INSERT INTO users (name, mail, title, image) VALUES ('Edith Terte', 'edan@kea.dk', 'Lecturer', 'https://media.licdn.com/dms/image/C4E03AQE6nx7oUPqo_g/profile-displayphoto-shrink_800_800/0/1643707886591?e=1697673600&v=beta&t=Qp4GcxVlJfsZi4t-if6YJ6O1u7bH2oLwWgVxB-X5Nt4');
 INSERT INTO users (name, mail, title, image) VALUES ('Frederikke Bender', 'fbe@kea.dk', 'Head of Education', 'https://kea.dk/slir/w200-c1x1/images/user-profile/chefer/fbe.jpg');
+INSERT INTO users (name, mail, title, image) VALUES ('Murat Kilic', 'mki@eaaa.dk', 'Senior Lecturer', 'https://www.eaaa.dk/media/llyavasj/murat-kilic.jpg?width=800&height=450&rnd=133401946552600000');
+INSERT INTO users (name, mail, title, image) VALUES ('Anne Kirketerp', 'anki@eaaa.dk', 'Head of Education', 'https://www.eaaa.dk/media/5buh1xeo/anne-kirketerp.jpg?width=800&height=450&rnd=133403878321500000');
 
 
 -- select all
 SELECT * FROM users;
 
-SELECT * FROM users ORDER BY name;
 -- select name and title
 SELECT name, title
 FROM users;
@@ -51,6 +43,14 @@ WHERE mail LIKE '%@kea.dk';
 SELECT *
 FROM users
 WHERE title = 'Lecturer';
+
+SELECT *
+FROM users
+WHERE title = 'Senior Lecturer';
+
+SELECT *
+FROM users
+WHERE name = 'Edith Terte';
 
 -- Create a New Table
 CREATE TABLE users (
@@ -91,3 +91,23 @@ SELECT title, COUNT(title) as count
 FROM users
 GROUP BY title;
 
+-- counts the number of different titles
+SELECT title, COUNT(title) as count
+FROM users
+GROUP BY title
+HAVING count > 1;
+
+-- Select all and order by name
+SELECT *
+FROM users
+ORDER BY name;
+
+-- Select all and order by title
+SELECT *
+FROM users
+ORDER BY title;
+
+-- Select all and order by name, descending order
+SELECT *
+FROM users
+ORDER BY name DESC;
