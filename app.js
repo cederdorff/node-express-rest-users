@@ -9,8 +9,8 @@ app.use(express.json()); // To parse JSON bodies
 app.use(cors()); // Enable CORS for all routes
 
 app.get("/", (request, response) => {
-    db.ping();
-    response.send("Node.js Users REST API 🎉");
+    db.ping(); // Check database connection
+    response.send("Node.js Users REST API 🎉"); // Send response
 });
 
 app.listen(port, () => {
