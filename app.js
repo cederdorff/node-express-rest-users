@@ -14,10 +14,9 @@ app.get("/", (request, response) => {
 
 // READ all users
 app.get("/users", async (request, response) => {
-    // sql query to select all from the table users
-    const query = "SELECT * FROM users ORDER BY name;";
-    const [users] = await db.execute(query); // execute the query
-    response.json(users); // send response
+    const query = "SELECT * FROM users"; // SQL query
+    const [users] = await db.execute(query); // Execute the query
+    response.json(users); // Send the results as JSON
 });
 
 // READ one user
