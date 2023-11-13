@@ -3,7 +3,7 @@ import express from "express";
 // import db from "./database.js";
 
 const app = express();
-const port = process.env.PORT || 3333;
+const port = process.env.PORT || 3000;
 
 app.use(express.json()); // To parse JSON bodies
 app.use(cors()); // Enable CORS for all routes
