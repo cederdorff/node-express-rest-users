@@ -21,12 +21,10 @@ app.get("/users", async (request, response) => {
 
 // READ one user
 app.get("/users/:id", async (request, response) => {
-    const id = request.params.id;
+    const id = request.params.id; // grabs the id from the url
     const query = "SELECT * FROM users WHERE id=?;"; // sql query
-    const values = [id];
-
+    const values = [id]; // values to insert into query
     const [results] = await db.execute(query, values); // execute the query
-
     response.json(results[0]); // send response
 });
 
