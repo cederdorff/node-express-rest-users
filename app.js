@@ -30,37 +30,29 @@ app.get("/users/:id", async (request, response) => {
 
 // CREATE user
 app.post("/users", async (request, response) => {
-    const user = request.body;
+    const user = request.body; // grab the user from the request body
     const query = "INSERT INTO users(name, mail, title, image) values(?,?,?,?);"; // sql query
-    // const query = "INSERT INTO users SET name=?, mail=?, title=?, image=?;"; // sql query
-    const values = [user.name, user.mail, user.title, user.image];
-
+    const values = [user.name, user.mail, user.title, user.image]; // values to insert into query
     const [result] = await db.execute(query, values); // execute the query
-
     response.json(result); // send response
 });
 
 // UPDATE user
 app.put("/users/:id", async (request, response) => {
-    const id = request.params.id;
-    const user = request.body;
+    const id = request.params.id; // grabs the id from the url
+    const user = request.body; // grab the user from the request body
     const query = "UPDATE users SET name=?, mail=?, title=?, image=? WHERE id=?;"; // sql query
-    // const query = `UPDATE users SET name="${user.name}", mail="${user.mail}", title="${user.title}", image="${user.image}" WHERE id=${id};`; // sql query
-    const values = [user.name, user.mail, user.title, user.image, id];
-
+    const values = [user.name, user.mail, user.title, user.image, id]; // values to insert into query
     const [result] = await db.execute(query, values); // execute the query
-
     response.json(result); // send response
 });
 
 // DELETE user
 app.delete("/users/:id", async (request, response) => {
-    const id = request.params.id; // tager id fra url'en, så det kan anvendes til at finde den givne bruger med "det" id.
+    const id = request.params.id; // grabs the id from the url
     const query = "DELETE FROM users WHERE id=?;"; // sql query
-    const values = [id];
-
+    const values = [id]; // values to insert into query
     const [result] = await db.execute(query, values); // execute the query
-
     response.json(result); // send response
 });
 
